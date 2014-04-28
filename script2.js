@@ -26,14 +26,21 @@ $(document).on("pageinit", "#loginForm", function () {
 $(document).on("pageinit", "#expense", function(){
     var listDescription;
     var payment;
+    var ss = window.localStorage;
+    var k;
+    for(k in ss){
+        //ss.clear();
+        if(ss.getItem(k).charAt(0) != "a")
+            $('#list1').prepend('<div>' + "\u00A3 "  + k + "\t\t\t" + ss.getItem(k) + '</div>');
+    }
     //expense page ACCESS SET METHOD
     $('#add_list').click( function() {
 
         listDescription = $('#list_description').val();
         payment = $('#payment').val();
-        if(!isNaN(listDescription))
-            $('.expense_list').prepend('<div>' + "\u00A3 "  + listDescription + "\t\t\t" + payment + "\t" + '</div>');
-            //end of append
+        if(!isNaN(listDescription) && listDescription != ""){
+            $('#list1').prepend('<div>' + "\u00A3 "  + listDescription + "\t\t\t" + payment + "\t" + '</div>');
+        }
 
         //sending the expense list information to the server each time it is added.
         $.ajax({
@@ -48,6 +55,8 @@ $(document).on("pageinit", "#expense", function(){
             cache:false,
             success: function (data) {
                 alert(data.status);
+                if(!isNaN(listDescription) && listDescription != "")
+                    ss.setItem(listDescription, payment);
             },
             error: function (xhr, status, error) {
                 alert(error);
@@ -62,21 +71,31 @@ $(document).on("pageinit", "#expense", function(){
 $(document).on("pageinit", "#earnings", function(){
     var listDescription1;
     var payment1;
+    var ss1 = window.localStorage;
+    var j;
+    for(j in ss1){
+        //ss1.clear();
+        if(ss1.getItem(j).charAt(0) == "a"){
+            $('#list2').prepend('<div>' + "\u00A3 "  + j + "\t\t\t" + ss1.getItem(j).substring(1) + '</div>');
+        }
+    }
     //earnings page ACCESS SET METHOD
     $('#add_list1').click( function() {
 
         //appending information to the list in earnings page
         listDescription1 = $('#list_description1').val();
         payment1 = $('#payment1').val();
-        if(!isNaN(listDescription1))
-            $('.expense_list1').prepend('<div>' + "\u00A3 "  + listDescription1 + "\t\t\t" + payment1 + '</div>');
-            //end of append
+        if(!isNaN(listDescription1) && listDescription1 != ""){
+            $('#list2').prepend('<div>' + "\u00A3 "  + listDescription1 + "\t\t\t" + payment1 + '</div>');
+        }
 
         $.getJSON("http://softwarehuttest.x10.mx/public/user/income", {
             amount: listDescription1,
             account: payment1
         }, function(data) {
             alert(data.status);
+            if(!isNaN(listDescription1) && listDescription1 != "")
+                ss1.setItem(listDescription1, "a" + payment1);
         }).fail(function() {
                 alert("error");
             })
@@ -250,38 +269,14 @@ $(document).on("pageinit", "#bills",function(){
 });
 
 // triggers when leaving any page
-/*$(document).on("pagebeforechange", function (e, data) {
-
-    var to_page = data.toPage[0].id;
-    // skip showing #loginForm page if condition is true
-    if (to_page == "#loginForm" && isLogged) {
-
-        // true! go to #home instead
-        $.mobile.changePage("#home", {
-            transition: "flip"
-        });
-        e.preventDefault();
-    }
-});*/
-
-// triggers when leaving any page
-$(document).on('pagebeforechange', function(e, data){
-    var to = data.toPage;
-
-    if (typeof to  === 'string') {
-        var u = $.mobile.path.parseUrl(to);
-        to = u.hash || '#' + u.pathname.substring(1);
-
-        if (to === '#loginForm') {
-            $.mobile.changePage("#home", {
-                transition: "flip"
-            });
-            alert('Can not transition the page!');
-            e.preventDefault();
-            e.stopPropagation();
-
-            // remove active status on a button, if transition was triggered with a button
-            $.mobile.activePage.find('.ui-btn-active').removeClass('ui-btn-active ui-shadow').css({'box-shadow':'0 0 0 #3388CC'});
+$(document).on('pagebeforechange', function (e, data) {
+    var to = $.mobile.path.parseUrl(data.toPage);
+    if (typeof to === 'object') {
+        var u = to.href;
+        if (u === $.mobile.urlHistory.stack[0].url) {
+            var current = "#" + $.mobile.activePage[0].id;
+            window.location.hash += current;
+            return false; //this will stop page change process
         }
     }
 });
