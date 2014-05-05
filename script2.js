@@ -1,8 +1,11 @@
 /**
  * Created by Karthik on 3/05/14.
  */
+
 var isLogged = false;
-//LOGGING IN AND GOING TO HOME PAGE ON SUCCESS
+/**
+ * Method used to log into the application
+ */
 $(document).on("pageinit", "#loginForm", function () {
     $("#form1").on("submit", function (event) {
         event.preventDefault();
@@ -23,6 +26,10 @@ $(document).on("pageinit", "#loginForm", function () {
     });
 });
 
+/**
+ * Method used to update the 'expense' page and save information locally
+ * Information will also be updated to the server
+ */
 $(document).on("pageinit", "#expense", function(){
     var listDescription;
     var payment;
@@ -54,12 +61,16 @@ $(document).on("pageinit", "#expense", function(){
             async:true,
             cache:false,
             success: function (data) {
-                alert(data.status);
+                if(data.status == "validationError")
+                    alert("Invalid Entry.");
+                else
+                    alert("Successfully added.");
                 if(!isNaN(listDescription) && listDescription != "")
                     ss.setItem(listDescription, payment);
             },
             error: function (xhr, status, error) {
-                alert(error);
+                //alert(error);
+                alert("Invalid Entry");
             }
         });
 
@@ -68,6 +79,10 @@ $(document).on("pageinit", "#expense", function(){
     });
 });
 
+/**
+ * Method used to update the 'earnings' page and save information locally
+ * Information will also be updated to the server
+ */
 $(document).on("pageinit", "#earnings", function(){
     var listDescription1;
     var payment1;
@@ -93,11 +108,15 @@ $(document).on("pageinit", "#earnings", function(){
             amount: listDescription1,
             account: payment1
         }, function(data) {
-            alert(data.status);
+            //alert(data.status);
+            if(data.status == "validationError")
+                alert("Invalid Entry");
+            else
+                alert("Successfully added");
             if(!isNaN(listDescription1) && listDescription1 != "")
                 ss1.setItem(listDescription1, "a" + payment1);
         }).fail(function() {
-                alert("error");
+                alert("Invalid Entry.");
             })
 
         $('#list_form1')[0].reset();
@@ -105,6 +124,10 @@ $(document).on("pageinit", "#earnings", function(){
     });//END OF SET METHOD ACCESS
 });
 
+/**
+ * Method used to retrieve information from the server
+ * and update the data on the mobile application's 'transaction page'
+ */
 $(document).on("pageinit", "#transaction" ,function(){
     //Transaction
     $.getJSON("http://softwarehuttest.x10.mx/public/user/transactionlog/", function (data) {
@@ -133,6 +156,10 @@ $(document).on("pageinit", "#transaction" ,function(){
     });//end of transaction page update
 });
 
+/**
+ * Method used to retrieve information from the server
+ * and update the data on the mobile application's 'budget page'
+ */
 $(document).on("pageinit", "#budget",function(){
     //Budget
     $.getJSON("http://softwarehuttest.x10.mx/public/user/balance/",function(data){
@@ -160,6 +187,10 @@ $(document).on("pageinit", "#budget",function(){
 
 var identity = [];
 var count = 0;
+/**
+ * Method used to retrieve information from the server
+ * and update the data on the mobile application's 'unpaid page'
+ */
 $(document).on("pageinit", "#unpaidBills",function(){
     //UNPAID BILLS
     $.getJSON("http://softwarehuttest.x10.mx/public/user/listunpaidbills/",function(data){
@@ -196,7 +227,9 @@ $(document).on("pageinit", "#unpaidBills",function(){
         })//end of for each loop
         $( "#unpaidList" ).collapsibleset();
 
-        //Confirm Payment
+        //Confirm Payment function within the 'unpaid page'
+        //clicking the paid button activates this function
+        //and confirms the payment and removes the bill
         $(".myinput").click(function(){
             var $this = $(this);
             var index = $this.data('identityindex'); //undefined.
@@ -207,11 +240,14 @@ $(document).on("pageinit", "#unpaidBills",function(){
             }).fail(function() {
                     alert("error");
                 });
-            //location.reload(true); //try for immediate removal of info upon button click
         });
-    });//end of unpaid bills page update
-});
+    });
+});//end of unpaid bills page update
 
+/**
+ * Method used to retrieve information from the server
+ * and update the data on the mobile application's 'benefit page'
+ */
 $(document).on("pageinit", "#benefits",function(){
     //UPDATING BENEFITS PAGE WITH INFO FROM DATABASE
     $.getJSON("http://softwarehuttest.x10.mx/public/user/listincome/", function (data) {
@@ -240,6 +276,10 @@ $(document).on("pageinit", "#benefits",function(){
     });//end of benefits page update
 });
 
+/**
+ * Method used to retrieve information from the server
+ * and update the data on the mobile application's 'bills page'
+ */
 $(document).on("pageinit", "#bills",function(){
     //UPDATING THE BILLS PAGE WITH INFO FROM DATABASE // ACCESSING GET METHOD
     $.getJSON("http://softwarehuttest.x10.mx/public/user/listbills/",function(data){
@@ -268,7 +308,10 @@ $(document).on("pageinit", "#bills",function(){
     })//end of bills page update
 });
 
-// triggers when leaving any page
+/**
+ * triggers when leaving any page. Used constrain the user
+ * from being able to click back button and go back to log in page.
+ */
 $(document).on('pagebeforechange', function (e, data) {
     var to = $.mobile.path.parseUrl(data.toPage);
     if (typeof to === 'object') {
@@ -281,6 +324,9 @@ $(document).on('pagebeforechange', function (e, data) {
     }
 });
 
-//back button for all pages less home
+/**
+ * back buttons for all pages less log in and main page
+ * @type {string}
+ */
 $.mobile.page.prototype.options.addBackBtn = "true";
 $.mobile.page.prototype.options.backBtnText = "Go Back";

@@ -23,7 +23,7 @@
     <sortChildren value="false" />
   </component>
   <component name="DebuggerManager">
-    <breakpoint_any>
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
         <option name="NOTIFY_UNCAUGHT" value="true" />
@@ -59,6 +59,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -71,25 +72,16 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="673" selection-end="673" vertical-scroll-proportion="-4.3333335" vertical-offset="0" max-vertical-offset="4607">
+            <state line="72" column="25" selection-start="3157" selection-end="3157" vertical-scroll-proportion="-47.076923" vertical-offset="0" max-vertical-offset="4352">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script2.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="script2.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="10" selection-start="941" selection-end="941" vertical-scroll-proportion="0.0" vertical-offset="203" max-vertical-offset="4947">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="1" selection-start="95" selection-end="95" vertical-scroll-proportion="0.1086262" vertical-offset="0" max-vertical-offset="626">
+            <state line="278" column="3" selection-start="9577" selection-end="9577" vertical-scroll-proportion="0.8642173" vertical-offset="4185" max-vertical-offset="5729">
               <folding />
             </state>
           </provider>
@@ -172,6 +164,9 @@
             <id>SQL</id>
           </State>
           <State>
+            <id>Spelling</id>
+          </State>
+          <State>
             <id>UndefinedPHP</id>
           </State>
           <State>
@@ -180,7 +175,7 @@
         </expanded-state>
         <selected-state>
           <State>
-            <id>CoffeeScript</id>
+            <id>SpellCheckingInspection</id>
           </State>
         </selected-state>
       </profile-state>
@@ -212,7 +207,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -233,20 +227,34 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="editor.preferences.appearance" />
+    <property name="options.lastSelected" value="Errors" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -276,7 +284,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1320" height="784" extended-state="7" />
+    <frame x="54" y="-8" width="1320" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -321,6 +329,25 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="673" selection-end="673" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4607">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="10" selection-start="941" selection-end="941" vertical-scroll-proportion="0.0" vertical-offset="203" max-vertical-offset="4947">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="1" selection-start="95" selection-end="95" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="170" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="123" column="17" selection-start="5329" selection-end="5329" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4607">
@@ -391,23 +418,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="1" selection-start="95" selection-end="95" vertical-scroll-proportion="0.1086262" vertical-offset="0" max-vertical-offset="626" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="673" selection-end="673" vertical-scroll-proportion="-4.3333335" vertical-offset="0" max-vertical-offset="4607">
+        <state line="72" column="25" selection-start="3157" selection-end="3157" vertical-scroll-proportion="-47.076923" vertical-offset="0" max-vertical-offset="4352">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="10" selection-start="941" selection-end="941" vertical-scroll-proportion="0.0" vertical-offset="203" max-vertical-offset="4947">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="1" selection-start="95" selection-end="95" vertical-scroll-proportion="0.1086262" vertical-offset="0" max-vertical-offset="626">
+        <state line="278" column="3" selection-start="9577" selection-end="9577" vertical-scroll-proportion="0.8642173" vertical-offset="4185" max-vertical-offset="5729">
           <folding />
         </state>
       </provider>
